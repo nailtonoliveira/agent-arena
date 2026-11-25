@@ -47,8 +47,28 @@ bash integrations/mock-battle.sh
 Supported event types:
 `TASK_START`, `TOOL_READ`, `TOOL_WRITE`, `TOOL_EXEC`, `TOOL_FAIL`, `CONTEXT_UPDATE`, `TASK_COMPLETE`.
 
-### CLI Hook Example
+### CLI Hook Examples
+
+#### Claude Code / Generic Shell Hook
 
 ```bash
 ./integrations/claude-hook.sh TOOL_WRITE "src/index.js"
 ```
+
+#### Antigravity CLI (`agy`) Native Lifecycle Hooks
+
+AgentArena includes a native Antigravity CLI hook adapter ([`integrations/agy-hook.mjs`](integrations/agy-hook.mjs)) that maps Antigravity lifecycle events (`SessionStart`, `PreInvocation`, `PostToolUse`, `Stop`) directly to Arena battle animations without blocking the agent if the server is offline.
+
+Install globally (`~/.gemini/config/hooks.json`):
+
+```bash
+./integrations/install-agy-hook.sh --global
+```
+
+Or install for a specific workspace (`.agents/hooks.json`):
+
+```bash
+./integrations/install-agy-hook.sh --project /path/to/your/repo
+```
+
+You can also copy and customize [`integrations/agy-hooks.json`](integrations/agy-hooks.json) manually.

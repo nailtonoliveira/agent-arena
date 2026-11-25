@@ -1,0 +1,38 @@
+{
+  "agent-arena": {
+    "enabled": true,
+    "SessionStart": [
+      {
+        "type": "command",
+        "command": "node /ABS/PATH/TO/agent-arena/integrations/agy-hook.mjs",
+        "timeout": 5
+      }
+    ],
+    "PreInvocation": [
+      {
+        "type": "command",
+        "command": "node /ABS/PATH/TO/agent-arena/integrations/agy-hook.mjs",
+        "timeout": 5
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node /ABS/PATH/TO/agent-arena/integrations/agy-hook.mjs",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "type": "command",
+        "command": "node /ABS/PATH/TO/agent-arena/integrations/agy-hook.mjs",
+        "timeout": 5
+      }
+    ]
+  }
+}

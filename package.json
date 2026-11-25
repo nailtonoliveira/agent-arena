@@ -1,0 +1,18 @@
+{
+  "name": "agent-arena",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Real-time 2D RPG battle visualizer for coding CLI telemetry",
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "start": "concurrently -n server,client -c cyan,magenta \"npm run start --workspace=server\" \"npm run dev --workspace=client\"",
+    "dev": "concurrently -n server,client -c cyan,magenta \"npm run dev --workspace=server\" \"npm run dev --workspace=client\"",
+    "build": "npm run build --workspace=client"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

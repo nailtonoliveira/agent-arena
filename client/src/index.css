@@ -1,0 +1,232 @@
+:root {
+  color-scheme: dark;
+  --bg: #070913;
+  --panel: #101426;
+  --border: #252c4a;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --green: #22c55e;
+  --cyan: #06b6d4;
+  --red: #ef4444;
+  --amber: #f59e0b;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  background: radial-gradient(circle at top, #131936 0%, var(--bg) 65%);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.app-shell {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hud-bar {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+  gap: 12px;
+  align-items: center;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+}
+
+.brand-status {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-right: 12px;
+  border-right: 1px solid var(--border);
+}
+
+.brand-title {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #38bdf8;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+.status-pill.connected .status-dot {
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+}
+
+.status-pill.connecting .status-dot {
+  background: var(--amber);
+}
+
+.status-pill.disconnected .status-dot {
+  background: var(--red);
+}
+
+.hud-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hud-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.hud-sub {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.bar-row {
+  display: grid;
+  grid-template-columns: 28px 1fr 56px;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+}
+
+.bar-track {
+  height: 10px;
+  background: #1b213a;
+  border: 1px solid #2e375b;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  transition: width 180ms ease-out;
+}
+
+.bar-fill.hp {
+  background: linear-gradient(90deg, #16a34a, #4ade80);
+}
+
+.bar-fill.mp {
+  background: linear-gradient(90deg, #0891b2, #22d3ee);
+}
+
+.bar-fill.boss {
+  background: linear-gradient(90deg, #b91c1c, #f87171);
+}
+
+.arena-stage {
+  background: #060812;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+}
+
+.arena-canvas {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.telemetry-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+
+.telemetry-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.telemetry-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 128px;
+  overflow-y: auto;
+  font-size: 12px;
+}
+
+.telemetry-item {
+  display: grid;
+  grid-template-columns: 76px 136px 1fr;
+  gap: 10px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.telemetry-time {
+  color: var(--muted);
+}
+
+.telemetry-type {
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+.telemetry-type.TOOL_FAIL {
+  color: #f87171;
+}
+
+.telemetry-type.TASK_COMPLETE {
+  color: #4ade80;
+}
+
+.telemetry-detail {
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  .hud-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-status {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding-right: 0;
+    padding-bottom: 8px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
